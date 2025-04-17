@@ -7,19 +7,22 @@ import Content from '../components/layout/Content'
 
 import DataContext from '../data/DataContext';  
 import { data } from '../data/DataContext';   
+import Store from '../data/Store'
 
 const App = props => {
     const [state, setState] = useState(data)
-    
+
     return (
-        <DataContext.Provider value={{state, setState}}>
-                <div className="App">
-                    <Router>
-                        <Menu />
-                        <Content />
-                    </Router>
-                </div>
-        </DataContext.Provider>
+        <Store>
+            <DataContext.Provider value={{state, setState}}>
+                    <div className="App">
+                        <Router>
+                            <Menu />
+                            <Content />
+                        </Router>
+                    </div>
+            </DataContext.Provider>
+        </Store>
     )
 }
 
